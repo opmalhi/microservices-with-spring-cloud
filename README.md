@@ -74,8 +74,29 @@ cd currency-exchange-service
 ./mvnw spring-boot:run
 ```
 
+### Step 4: Start the Currency Conversion Service
+Navigate to the `currency-conversion-service` directory and start the service:
+```
+cd currency-conversion-service
+./mvnw spring-boot:run
+```
+
+### Step 5: Start the API Gateway Service
+Navigate to the `api-gateway` directory and start the service:
+```
+cd api-gateway
+./mvnw spring-boot:run
+```
+
 or open currency exchange project and start the application
 
 ## Monitoring and Logging
 First it this url `http://localhost:8000/currency-exchange/from/USD/to/PKR` and then go to Zipkin dashboard
 - Zipkin: Access the Zipkin dashboard at `http://localhost:9411` to monitor and trace requests.
+
+
+## To Resolve `Connection timed out: getsockopt` problem 
+- add below line to application.properties in every microservice you are sending request to
+```
+eureka.instance.prefer-ip-address=true
+```
