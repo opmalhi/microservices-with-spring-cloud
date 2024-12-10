@@ -51,52 +51,30 @@ Before running the microservices, ensure the following are installed:
 
 Follow these steps to set up and run the application:
 
-### Step 1: Start Zipkin for Distributed Tracing
-Run the following Docker command to start Zipkin for distributed tracing:
+### Step 1: Clone the Repository
+Pull the Git repository to your local system:
 ```
-docker run -p 9411:9411 openzipkin/zipkin:latest
-```
-
-### Step 2: Start the Naming Server
-Navigate to the `naming-server` directory and run the Naming Server:
-
-```
-cd naming-server
-./mvnw spring-boot:run
+git clone https://github.com/opmalhi/microservices-with-spring-cloud.git
 ```
 
-or open currency exchange project and start the application
+### Step 2: Start the Application
+Go to the terminal and move to git repository folder where docker-compose.yaml file will be present:
 
-### Step 3: Start the Currency Exchange Service
-Navigate to the `currency-exchange-service` directory and start the service:
 ```
-cd currency-exchange-service
-./mvnw spring-boot:run
-```
-
-### Step 4: Start the Currency Conversion Service
-Navigate to the `currency-conversion-service` directory and start the service:
-```
-cd currency-conversion-service
-./mvnw spring-boot:run
+cd <repository-folder>
+docker-compose up
 ```
 
-### Step 5: Start the API Gateway Service
-Navigate to the `api-gateway` directory and start the service:
-```
-cd api-gateway
-./mvnw spring-boot:run
-```
+This will automatically start all the required microservices and dependencies.
 
-or open currency exchange project and start the application
+## Docker Image for Currency Exchange Service
+The Docker image for the Currency Exchange Service is available as:
+opmalhi/microservice-currency-exchange-service:0.0.1-SNAPSHOT
 
-## Monitoring and Logging
-First it this url `http://localhost:8000/currency-exchange/from/USD/to/PKR` and then go to Zipkin dashboard
-- Zipkin: Access the Zipkin dashboard at `http://localhost:9411` to monitor and trace requests.
+---
 
-
-## To Resolve `Connection timed out: getsockopt` problem 
-- add below line to application.properties in every microservice you are sending request to
+## To Resolve `Connection timed out: getsockopt` Problem
+If you encounter a `Connection timed out: getsockopt` issue, add the following line to the `application.properties` file in every microservice you are sending requests to:
 ```
 eureka.instance.prefer-ip-address=true
 ```
