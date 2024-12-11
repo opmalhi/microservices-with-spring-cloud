@@ -21,6 +21,7 @@ Additional services include an API Gateway and a Naming Server to enable service
   - Communicates with the Currency Exchange Service using Feign or REST template.
   - Performs the conversion based on the retrieved exchange rate.
   - Registers itself with the Naming Server.
+  - Docker image: opmalhi/microservice-currency-conversion-service:0.0.1-SNAPSHOT
 
 ### 3. API Gateway
 - **Purpose**: Acts as a single entry point for all the microservices.
@@ -70,6 +71,9 @@ This will automatically start all the required microservices and dependencies.
 ### Step 3: Access the Services
 - Currency Exchange API:
 Example: `http://localhost:8000/currency-exchange/from/USD/to/PKR`
+
+- Currency Conversion API:
+Example: `http://localhost:8100/currency-conversion-feign/from/USD/to/PKR/quantity/10`
 
 - Naming Server (Eureka):
 Eureka: `http://localhost:8761/eureka`
