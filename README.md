@@ -13,6 +13,7 @@ Additional services include an API Gateway and a Naming Server to enable service
 - **Features**:
   - Fetch exchange rates for different currency pairs.
   - Registers itself with the Naming Server for service discovery.
+  - Docker image: opmalhi/microservice-currency-exchange-service:0.0.1-SNAPSHOT
 
 ### 2. Currency Conversion Service
 - **Purpose**: Converts one currency to another using exchange rates from the Currency Exchange Service.
@@ -40,10 +41,10 @@ Additional services include an API Gateway and a Naming Server to enable service
 
 Before running the microservices, ensure the following are installed:
 
-1. [Docker](https://www.docker.com/get-started) - to run Zipkin for distributed tracing.
-2. Java 17 (or compatible version).
-3. Maven 3.6+.
-4. Spring Boot CLI (optional, for rapid development).
+1. [Docker](https://www.docker.com/get-started) - to run the services and Zipkin for distributed tracing.
+2. Java 17 (or compatible version) (optional, if not using Docker images).
+3. Maven 3.6+ (optional, if not using Docker images).
+4. Docker Compose - for orchestrating all services.
 
 ---
 
@@ -51,21 +52,27 @@ Before running the microservices, ensure the following are installed:
 
 Follow these steps to set up and run the application:
 
-### Step 1: Clone the Repository
-Pull the Git repository to your local system:
+### Step 1: Pull the Git Repository
+Clone the repository and navigate to its folder:
 ```
 git clone https://github.com/opmalhi/microservices-with-spring-cloud.git
-```
-
-### Step 2: Start the Application
-Go to the terminal and move to git repository folder where docker-compose.yaml file will be present:
-
-```
 cd <repository-folder>
+```
+
+### Step 2: Start the Services with Docker Compose
+Run the following command to start all services, including the Naming Server:
+```
 docker-compose up
 ```
 
 This will automatically start all the required microservices and dependencies.
+
+### Step 3: Access the Services
+- Currency Exchange API:
+Example: `http://localhost:8000/currency-exchange/from/USD/to/PKR`
+
+- Naming Server (Eureka):
+Eureka: `http://localhost:8761/eureka`
 
 ## Docker Image for Currency Exchange Service
 The Docker image for the Currency Exchange Service is available as:
