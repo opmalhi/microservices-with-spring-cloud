@@ -29,6 +29,8 @@ Additional services include an API Gateway and a Naming Server to enable service
   - Routes requests to appropriate microservices.
   - Implements centralized logging and monitoring.
   - Handles cross-cutting concerns like authentication and throttling.
+  - Docker image: opmalhi/microservice-api-gateway-service:0.0.1-SNAPSHOT
+
 
 ### 4. Naming Server (Eureka Server)
 - **Purpose**: Enables service discovery and load balancing.
@@ -77,6 +79,10 @@ Example: `http://localhost:8100/currency-conversion-feign/from/USD/to/PKR/quanti
 
 - Naming Server (Eureka):
 Eureka: `http://localhost:8761/eureka`
+
+- Api Gateway:
+Example: `http://localhost:8765/currency-exchange/from/USD/to/PKR`
+Example: `http://localhost:8765/currency-conversion-feign/from/USD/to/PKR/quantity/10`
 
 ## Docker Image for Currency Exchange Service
 The Docker image for the Currency Exchange Service is available as:
